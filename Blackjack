@@ -58,23 +58,32 @@ def card2(hand):
         print(random.randint(1,11)) 
     print(random.choice(hand)) 
 
-
+def blackjack(dealerhand, playerhand):
+if total(playerhand) == 21:
+		results(dealerhand, playerhand)
+print "Congratulations! You got a Blackjack!\n"
+		play_again()
+elif sumcard(dealerhand) == 21:
+		results(dealerhand, playerhand)		
+print "Sorry, you lose. The dealer got a blackjack.\n"
+		play_again()
+		
 def score(dealerhand, playerhand):
 if sumcard(playerhand) == 21:
-		print_results(dealerhand, playerhand)
-print "Congratulations! You got a Blackjack!\n"
+		results(dealerhand, playerhand)
+print "Blackjack!\n"
 elif sumcard(dealerhand) == 21:
-		print_results(dealerhand, playerhand)		
+		results(dealerhand, playerhand)		
 print "Sorry, you lose. The dealer got a blackjack.\n"
 elif sumcard(playerhand) > 21:
-		print_results(dealerhand, playerhand)
-print "Sorry. You busted. You lose.\n"
+		results(dealerhand, playerhand)
+print "Bust! You lose.\n"
 elif sumcard(dealerhand) > 21:
-		print_results(dealerhand, playerhand)			   
-print "Dealer busts. You win!\n"
+		results(dealerhand, playerhand)			   
+print "Dealer Bust! You win!\n"
 elif sumcard(playerhand) < sumcard(dealerhand):
-		print_results(dealerhand, playerhand)
-print "Sorry. Your score isn't higher than the dealer. You lose.\n"
+		results(dealerhand, playerhand)
+print "Darn! The dealers score is higher. You lose.\n"
 elif sumcard(playerhand) > sumcard(dealerhand):
-		print_results(dealerhand, playerhand)			   
-print "Congratulations. Your score is higher than the dealer. You win\n"
+		results(dealerhand, playerhand)			   
+print "Congrats! Your score is higher than the dealer. You win\n"
