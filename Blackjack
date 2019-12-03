@@ -58,6 +58,26 @@ def card2(hand):
         print(random.randint(1,11)) 
     print(random.choice(hand)) 
 
+def hit(hand):
+	card = deck.pop()
+	if card == 11:card = "J"
+	if card == 12:card = "Q"
+	if card == 13:card = "K"
+	if card == 14:card = "A"
+	hand.append(card)
+	return hand
+
+def clear():
+	if os.name == 'nt':
+		os.system('CLS')
+	if os.name == 'posix':
+		os.system('clear')
+
+def results(dealerhand, playerhand):
+	clear()
+	print ("Dealer:" + str(dealerhand) + "Total:" + str(sumcard(dealerhand)))
+	print ("You" + str(playerhand) + "Total:" +str(sumcard(player_hand)))
+	
 def blackjack(dealerhand, playerhand):
 if total(playerhand) == 21:
 		results(dealerhand, playerhand)
