@@ -81,29 +81,61 @@ def results(dealerhand, playerhand):
 def blackjack(dealerhand, playerhand):
 if total(playerhand) == 21:
 		results(dealerhand, playerhand)
-print "Congratulations! You got a Blackjack!\n"
+print "you got a blackjack, yay!\n"
 		play_again()
 elif sumcard(dealerhand) == 21:
 		results(dealerhand, playerhand)		
-print "Sorry, you lose. The dealer got a blackjack.\n"
+print "dealer got a blackjack. you lose\n"
 		play_again()
 		
 def score(dealerhand, playerhand):
 if sumcard(playerhand) == 21:
 		results(dealerhand, playerhand)
-print "Blackjack!\n"
+print "blackjack\n"
 elif sumcard(dealerhand) == 21:
 		results(dealerhand, playerhand)		
-print "Sorry, you lose. The dealer got a blackjack.\n"
+print "dealer got a blackjack. you lost.\n"
 elif sumcard(playerhand) > 21:
 		results(dealerhand, playerhand)
-print "Bust! You lose.\n"
+print "bust, sorry you lost\n"
 elif sumcard(dealerhand) > 21:
 		results(dealerhand, playerhand)			   
-print "Dealer Bust! You win!\n"
+print "dealer busted, you win this round\n"
 elif sumcard(playerhand) < sumcard(dealerhand):
 		results(dealerhand, playerhand)
-print "Darn! The dealers score is higher. You lose.\n"
+print "dealer's score is greater, you lost.\n"
 elif sumcard(playerhand) > sumcard(dealerhand):
 		results(dealerhand, playerhand)			   
-print "Congrats! Your score is higher than the dealer. You win\n"
+print "your score is higher than the dealer. you won\n"
+
+def playgame():
+    output = 0
+    clear()
+    print("play blackjack game")
+    playerhand = deal(deck)
+    dealerhand = deal(deck)
+    print ("dealer" + str(dealerhand[0]))
+    print ("player" + str(playerhand) "for total" +str(total(playerhand))) 
+    blackjack (dealerhand, playerhand)
+    quit=False
+     while not quit:
+        choice = input("Wanna [H]it ?, Wanna [S]tand ?, or Wanna [Q]uit? : ").lower()
+        if choice == 'h':
+            hit(playerhand)
+            print(playerhand)
+            if total(playerhand)>21:
+                print('bust')
+                play_again()
+        elif choice=='s':
+            while total(dealerhand)<17:
+                hit(dealerhand)
+                print(dealerhand)
+                if total(dealerhand)>21:
+                    print('dealer bust you won')
+                    play_again()
+            score(dealerhand,playerhand)
+            play_again()
+        elif choice == "q":
+            print("come play again soon!!")
+            quit=True
+            exit()
